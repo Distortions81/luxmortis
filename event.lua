@@ -20,13 +20,12 @@ function dark_event_handler(event)
     elseif event.name == defines.events.on_game_created_from_scenario then
         make_dark_globals()
     elseif event.name == defines.events.on_chunk_charted then
-        on_chunk_charted()
+        on_chunk_charted(event)
     end
 end
 
 function on_chunk_charted(event)
-    game.print("uncharted" .. event.position)
-    event.force.unchart_chunk(event.position, event.surface_index)
+        event.force.unchart_chunk(event.position, event.surface_index)
 end
 
 -- New player
