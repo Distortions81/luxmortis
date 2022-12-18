@@ -3,7 +3,7 @@
 function make_dark_globals()
     -- Lamp radius
     if not global.d_lightd then
-        global.d_lightd = 7
+        global.d_lightd = 10
     end
     -- Limited fire life
     if not global.d_firelife then
@@ -15,6 +15,8 @@ function make_dark_globals()
     end
 end
 
+
+--Map setup
 function dark_startmap()
 
     if not global.dark_settings_set then
