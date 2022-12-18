@@ -28,7 +28,7 @@ function dark_startmap()
     end
   
     --Get spawn position
-    local cpos = {x = 0, y = 0}
+    local cpos = {x = 2, y = 2}
   
     --Add lamp
     if global.m45logo_lamp then
@@ -38,7 +38,7 @@ function dark_startmap()
       rendering.draw_sprite {
       sprite = "entity/small-lamp",
       render_layer = "floor",
-      target = {x = cpos.x, y = cpos.y + 3.5},
+      target = cpos,
       x_scale = 2,
       y_scale = 2,
       surface = game.surfaces[1]
