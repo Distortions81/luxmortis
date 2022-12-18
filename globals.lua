@@ -52,7 +52,6 @@ function dark_startmap()
     global.startbox.rotatable = false
     global.startbox.destructible = false
 
-
     --start pump
     local ppos = {
       x = 5,

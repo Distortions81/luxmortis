@@ -1,17 +1,13 @@
-
---init
+-- init
 script.on_init(function()
-  make_dark_globals()
+    make_dark_globals()
 end)
 
 -- Events
-script.on_event({
-  defines.events.on_player_created,
-defines.events.on_player_respawned,
-defines.events.on_cutscene_cancelled,
-defines.on_game_created_from_scenario}
-, function(event)
-  dark_event_handler(event)
+script.on_event({defines.events.on_player_created, defines.events.on_player_respawned,
+                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario,
+                 defines.events.on_chunk_charted}, function(event)
+    dark_event_handler(event)
 end)
 
 function dark_event_handler(event)
@@ -20,15 +16,22 @@ function dark_event_handler(event)
     elseif event.name == defines.events.on_player_respawned then
         on_player_respawned(event)
     elseif event.name == defines.events.on_cutscene_cancelled then
-      on_player_created(event)
-    elseif event.name == defines.on_game_created_from_scenario then
-      make_dark_globals()
+        on_player_created(event)
+    elseif event.name == defines.events.on_game_created_from_scenario then
+        make_dark_globals()
+    elseif event.name == defines.events.on_chunk_charted then
+        on_chunk_charted()
     end
+end
+
+function on_chunk_charted(event)
+    game.print("uncharted" .. event.position)
+    event.force.unchart_chunk(event.position, event.surface_index)
 end
 
 -- New player
 function on_player_created(event)
-  dark_startmap()
+    dark_startmap()
 
     if event and event.player_index then
         local player = game.players[event.player_index]
@@ -54,7 +57,7 @@ function on_player_respawned(event)
     end
 end
 
---Setup charcater, disable flashlight, minimap, etc.
+-- Setup charcater, disable flashlight, minimap, etc.
 function player_setup(player)
     player.minimap_enabled = false
     player.disable_flashlight()
