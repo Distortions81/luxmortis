@@ -3,7 +3,7 @@
 function make_dark_globals()
     -- Lamp radius
     if not global.d_lightd then
-        global.d_lightd = 14
+        global.d_lightd = 7
     end
     -- Limited fire life
     if not global.d_firelife then
@@ -17,74 +17,125 @@ end
 
 function dark_startmap()
 
-    -- Starting map settings
-    global.dark_settings_set = true
+    if not global.dark_settings_set then
+        -- Starting map settings
+        global.dark_settings_set = true
 
-    game.surfaces[1].freeze_daytime = true
-    game.surfaces[1].brightness_visual_weights = {1 / 0.85, 1 / 0.85, 1 / 0.85}
-    game.surfaces[1].daytime = 0.5
+        game.surfaces[1].freeze_daytime = true
+        game.surfaces[1].brightness_visual_weights = {1 / 0.85, 1 / 0.85, 1 / 0.85}
+        game.surfaces[1].daytime = 0.5
 
-    -- Get spawn position
-    local cpos = {
-        x = 2,
-        y = 2
-    }
+        -- Get spawn position
+        local cpos = {
+            x = 3,
+            y = 5
+        }
 
-    --Start box
-    local boxpos = {
-        x = 3,
-        y = 2
-    }
-    global.startbox = game.surfaces[1].create_entity {
-        name = "iron-chest",
-        position = boxpos,
-        force = "player"
-    }
-    global.startbox.insert {
-        name = "boiler",
-        count = 4
-    }
-    global.startbox.insert {
-        name = "steam-engine",
-        count = 8
-    }
-    global.startbox.minable = false
-    global.startbox.rotatable = false
-    global.startbox.destructible = false
+        -- Start box
+        local boxpos = {
+            x = -1,
+            y = -1
+        }
+        local startbox = game.surfaces[1].create_entity {
+            name = "iron-chest",
+            position = boxpos,
+            force = "player"
+        }
+        startbox.insert {
+            name = "burner-mining-drill",
+            count = 16
+        }
+        startbox.insert {
+            name = "stone-furnace",
+            count = 8
+        }
+        startbox.insert {
+            name = "small-lamp",
+            count = 50
+        }
+        startbox.insert {
+            name = "firearm-magazine",
+            count = 50
+        }
 
-    --start pump
-    local ppos = {
-      x = 5,
-      y = 2
-  }
-    global.startpump = game.surfaces[1].create_entity{name="offshore-pump", position=ppos, force="player"}
-    global.startpump.minable = false
-    global.startpump.rotatable = false
-    global.startpump.destructible = false
+        -- start pump
+        local ppos = {
+            x = 4,
+            y = 2
+        }
+        local startpump = game.surfaces[1].create_entity {
+            name = "offshore-pump",
+            position = ppos,
+            force = "player"
+        }
+        startpump.minable = false
+        startpump.rotatable = false
+        startpump.destructible = false
 
-    -- Add lamp
-    if global.m45logo_lamp then
-        rendering.destroy(global.m45logo_lamp)
+        -- start boiler
+        local bpos = {
+            x = 5,
+            y = 4
+        }
+        local startboiler = game.surfaces[1].create_entity {
+            name = "boiler",
+            position = bpos,
+            force = "player",
+            direction = 3
+        }
+        startboiler.minable = false
+        startboiler.rotatable = false
+        startboiler.destructible = false
+        startboiler.insert {
+            name = "wood",
+            count = 100
+        }
+        -- start engine
+        local epos = {
+            x = 8,
+            y = 4
+        }
+        local startengine = game.surfaces[1].create_entity {
+            name = "steam-engine",
+            position = epos,
+            force = "player",
+            direction = 3
+        }
+        startengine.minable = false
+        startengine.rotatable = false
+        startengine.destructible = false
+
+        -- start pole
+        local pppos = {
+            x = 8,
+            y = 2
+        }
+        local startpole = game.surfaces[1].create_entity {
+            name = "small-electric-pole",
+            position = pppos,
+            force = "player",
+            direction = 3
+        }
+        startpole.minable = false
+        startpole.rotatable = false
+        startpole.destructible = false
+
+        -- start lamp
+        local lpos = {
+            x = 9,
+            y = 2
+        }
+        local startlamp = game.surfaces[1].create_entity {
+            name = "small-lamp",
+            position = lpos,
+            force = "player",
+            direction = 3
+        }
+        startlamp.minable = false
+        startlamp.rotatable = false
+        startlamp.destructible = false
     end
-    global.m45logo_lamp = rendering.draw_sprite {
-        sprite = "entity/small-lamp",
-        render_layer = "floor",
-        target = cpos,
-        x_scale = 2,
-        y_scale = 2,
-        surface = game.surfaces[1]
-    }
-    if global.m45logo_light then
-        rendering.destroy(global.m45logo_light)
-    end
-    global.m45logo_light = rendering.draw_light {
-        sprite = "utility/light_medium",
-        render_layer = 148,
-        target = cpos,
-        scale = 8,
-        surface = game.surfaces[1],
-        minimum_darkness = 0.5
-    }
+
 end
 
 function d_player_globals(player)
