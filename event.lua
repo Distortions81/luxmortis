@@ -29,7 +29,7 @@ end
 -- New player
 function on_player_created(event)
   dark_startmap()
-  
+
     if event and event.player_index then
         local player = game.players[event.player_index]
         if player and player.valid then
@@ -54,6 +54,7 @@ function on_player_respawned(event)
     end
 end
 
+--Setup charcater, disable flashlight, minimap, etc.
 function player_setup(player)
     player.minimap_enabled = false
     player.disable_flashlight()

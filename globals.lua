@@ -43,6 +43,17 @@ function dark_startmap()
       y_scale = 2,
       surface = game.surfaces[1]
     }
+    if global.m45logo_light then
+      rendering.destroy(global.m45logo_light)
+    end
+    global.m45logo_light = rendering.draw_light {
+      sprite = "utility/light_medium",
+      render_layer = 148,
+      target = cpos,
+      scale = 8,
+      surface = game.surfaces[1],
+      minimum_darkness = 0.5
+  }
   end
   
 function d_player_globals(player)
