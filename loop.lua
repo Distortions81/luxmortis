@@ -3,20 +3,6 @@
 script.on_nth_tick(
   300,
   function(event)
-
-    --temp work around for testing, game host/single player does not trigger create
-    if not global.initdark then
-        make_dark_globals()
-        dark_startmap()
-        local player = game.players[1]
-        if player and player.valid and player.character then
-            d_player_globals(player)
-            player_setup(player)
-            respawn_pitems(player)
-            global.initdark = true
-        end
-    end
-
     for _, player in pairs(game.connected_players) do
       if player and player.character then
         local found = false
