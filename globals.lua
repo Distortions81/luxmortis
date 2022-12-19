@@ -3,7 +3,7 @@
 function make_dark_globals()
     -- Lamp radius
     if not global.d_lightd then
-        global.d_lightd = 10
+        global.d_lightd = 15
     end
     -- Limited fire life
     if not global.d_firelife then

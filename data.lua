@@ -26,8 +26,3 @@ item.localised_name = {"entity-name."..lamp_name}
 item.localised_description = {"entity-description."..lamp_name}
 
 data:extend({entity, item, recipe})
-
-
-local tech = data.raw.technology.optics
-tech.effects = tech.effects or {}
-table.insert(tech.effects, {type = "unlock-recipe", recipe = lamp_name})
