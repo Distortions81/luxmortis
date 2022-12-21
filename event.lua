@@ -37,7 +37,7 @@ function on_player_created(event)
         if player and player.valid then
             d_player_globals(player)
             player_setup(player)
-            respawn_pitems(player)
+            respawn_citems(player)
         end
     end
 end
@@ -47,10 +47,6 @@ function on_player_respawned(event)
     if event and event.player_index then
         local player = game.players[event.player_index]
         if player and player.valid then
-            player.insert {
-                name = "wood",
-                count = 25
-            }
             player_setup(player)
         end
     end
@@ -62,17 +58,5 @@ function player_setup(player)
     player.disable_flashlight()
 end
 
-function respawn_pitems(player)
-    player.insert {
-        name = "small-lamp",
-        count = 25
-    }
-    player.insert {
-        name = "small-electric-pole",
-        count = 25
-    }
-    player.insert {
-        name = "wood",
-        count = 25
-    }
+function respawn_citems(player)
 end

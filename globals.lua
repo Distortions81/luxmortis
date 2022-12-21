@@ -43,22 +43,6 @@ function dark_startmap()
             position = boxpos,
             force = "player"
         }
-        startbox.insert {
-            name = "burner-mining-drill",
-            count = 16
-        }
-        startbox.insert {
-            name = "stone-furnace",
-            count = 8
-        }
-        startbox.insert {
-            name = "small-lamp",
-            count = 50
-        }
-        startbox.insert {
-            name = "firearm-magazine",
-            count = 50
-        }
 
         -- start pump
         local ppos = {

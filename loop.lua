@@ -1,7 +1,7 @@
 --Darkness Damage, every 5 seconds
 --Should process x per frame instead, to prevent hitching
 script.on_nth_tick(
-  300,
+  60,
   function(event)
     for _, player in pairs(game.connected_players) do
       if player and player.character then
@@ -53,7 +53,8 @@ script.on_nth_tick(
           if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] > 0 then
             player.character.damage(global.d_player_dmg[player.index], game.forces["enemy"])
 
-            player.print("[color=red]The darkness gnaws at you...[/color]")
+            --player.print("[color=red]The darkness gnaws at you...[/color]")
+            player.surface.play_sound{path="__luxmortis__/sounds/poison-capsule-explosion-1.ogg", position=player.position}
           end
         end
       end
