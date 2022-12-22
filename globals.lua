@@ -13,6 +13,22 @@ function make_dark_globals()
     if not global.d_player_dmg then
         global.d_player_dmg = {}
     end
+
+    if not global.DamPos then
+        global.DamPos = 1
+    end
+
+    if not global.LastPlayerCount then
+        global.LastPlayerCount = -1
+    end
+
+    if not global.FramesPerPlayer then
+        global.FramesPerPlayer = 1
+    end
+
+    if not global.MaxPlayers then
+        global.MaxPlayers = 60
+    end
 end
 
 
