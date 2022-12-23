@@ -1,5 +1,4 @@
--- Darkness Damage, every 5 seconds
--- Should process x per frame instead, to prevent hitching
+--Tick handler
 script.on_event(defines.events.on_tick, function(event)
 
     -- Stop if not init yet
