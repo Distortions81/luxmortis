@@ -2,11 +2,12 @@
 -- Should process x per frame instead, to prevent hitching
 script.on_event(defines.events.on_tick, function(event)
 
-  --Not init yet
+  --Stop if not init yet
   if not global.MaxPlayers then
     return
   end
 
+  --Check how many players are online
     local numplayers = 0
     for _, _ in pairs(game.connected_players) do
         numplayers = numplayers + 1
@@ -28,11 +29,14 @@ script.on_event(defines.events.on_tick, function(event)
         -- Calculate number of ticks till next damage
         global.FramesPerPlayer = global.MaxPlayers / numplayers
     end
+
+    --Every FramesPerPlayer, check one player
     if game.tick % global.FramesPerPlayer == 0 then
 
+      --If we are aren't to the last player yet, increment
         if global.DamPos < numplayers then
             global.DamPos = global.DamPos + 1
-        else
+        else -- Otherwise start over
             global.DamPos = 1
         end
 
@@ -69,11 +73,14 @@ script.on_event(defines.events.on_tick, function(event)
 
                 -- Keeps immortals from overflowing the value
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] < 500 then
+                  --Increase damage
                     global.d_player_dmg[player.index] = (global.d_player_dmg[player.index] + global.d_player_dmg[player.index])
                 else
+                  --Else reset
                     global.d_player_dmg[player.index] = 5 -- Init
                 end
 
+                --If above minimum, damage player
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] > 5 then
                     player.character.damage(global.d_player_dmg[player.index], game.forces["enemy"])
 
