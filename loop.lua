@@ -79,7 +79,7 @@ script.on_event(defines.events.on_tick, function(event)
                     player.character.surface.play_sound({
                         path = "dark-damage",
                         position = player.character.position,
-                        volume_modifier = 1
+                        volume_modifier = 0.5
                     })
                 end
 
