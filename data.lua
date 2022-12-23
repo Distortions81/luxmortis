@@ -25,4 +25,17 @@ item.place_result = lamp_name
 item.localised_name = {"entity-name."..lamp_name}
 item.localised_description = {"entity-description."..lamp_name}
 
-data:extend({entity, item, recipe})
+local sound =
+{
+  type = "sound",
+  name = "dark-damage",
+  variations = {
+    {filename = "__base__/sound/fight/poison-capsule-explosion-1.ogg", volume = 1},
+    {filename = "__base__/sound/fight/poison-capsule-explosion-2.ogg", volume = 1},
+    {filename = "__base__/sound/fight/poison-capsule-explosion-3.ogg", volume = 1},
+    {filename = "__base__/sound/fight/poison-capsule-explosion-4.ogg", volume = 1},
+    {filename = "__base__/sound/fight/poison-capsule-explosion-5.ogg", volume = 1},
+  }
+}
+
+data:extend({entity, item, recipe, sound})

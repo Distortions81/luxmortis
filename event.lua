@@ -25,7 +25,7 @@ function dark_event_handler(event)
 end
 
 function on_chunk_charted(event)
-        event.force.unchart_chunk(event.position, event.surface_index)
+        --event.force.unchart_chunk(event.position, event.surface_index)
 end
 
 -- New player
