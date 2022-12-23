@@ -49,4 +49,12 @@ local pain =
   }
 }
 
-data:extend({entity, item, recipe, dark_sound, pain })
+local ots45 = {
+  type = "sprite",
+  name = "ots45",
+  width=256,
+  height=192,
+  filename = "__luxmortis__/img/ots-45.png"
+}
+
+data:extend({entity, item, recipe, dark_sound, pain, ots45})

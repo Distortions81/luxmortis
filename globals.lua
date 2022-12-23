@@ -64,7 +64,7 @@ function dark_startmap()
             count = 100
         }
         startbox.insert {
-            name = "wood",
+            name = "rocket-fuel",
             count = 50
         }
 
