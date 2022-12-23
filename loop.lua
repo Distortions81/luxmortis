@@ -84,7 +84,7 @@ script.on_event(defines.events.on_tick, function(event)
                 -- If above minimum, damage player
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] > 5 then
                     -- player.print("[color=red]The darkness gnaws at you...[/color]")
-                    player.character.surface.play_sound ({
+                    player.play_sound ({
                         path = "dark-damage",
                         position = player.character.position,
                         volume_modifier = 1
