@@ -5,10 +5,6 @@ function make_dark_globals()
     if not global.d_lightd then
         global.d_lightd = 15
     end
-    -- Limited fire life
-    if not global.d_firelife then
-        global.d_firelife = 5400
-    end
     -- Player darkness damage
     if not global.d_player_dmg then
         global.d_player_dmg = {}

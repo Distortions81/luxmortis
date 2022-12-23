@@ -50,7 +50,7 @@ end
 -- Setup charcater, disable flashlight, minimap, etc.
 function player_setup(player)
     player.minimap_enabled = false
-    player.disable_flashlight()
+   -- player.disable_flashlight()
 end
 
 function respawn_citems(player)

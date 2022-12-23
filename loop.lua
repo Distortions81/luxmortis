@@ -1,4 +1,4 @@
---Tick handler
+-- Tick handler
 script.on_event(defines.events.on_tick, function(event)
 
     -- Stop if not init yet
@@ -11,7 +11,7 @@ script.on_event(defines.events.on_tick, function(event)
     for _, victim in pairs(game.connected_players) do
         numplayers = numplayers + 1
 
-        --No map for you!
+        -- No map for you!
         if victim.render_mode ~= defines.render_mode.game then
             victim.close_map()
         end
@@ -75,11 +75,19 @@ script.on_event(defines.events.on_tick, function(event)
             else
                 -- No near by light found
 
+                if global.d_player_dmg[player.index] == 5 then
+                    player.character.surface.play_sound({
+                        path = "dark-damage",
+                        position = player.character.position,
+                        volume_modifier = 1
+                    })
+                end
+
                 -- Keeps immortals from overflowing the value
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] < 500 then
                     -- Increase damage
                     global.d_player_dmg[player.index] = (global.d_player_dmg[player.index] +
-                                                            global.d_player_dmg[player.index])
+                    global.d_player_dmg[player.index])
                 else
                     -- Else reset
                     global.d_player_dmg[player.index] = 5 -- Init
@@ -89,9 +97,13 @@ script.on_event(defines.events.on_tick, function(event)
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] > 5 then
                     -- player.print("[color=red]The darkness gnaws at you...[/color]")
                     player.character.surface.play_sound({
-                        path = "dark-damage",
+                        path = "pain-damage",
                         position = player.character.position,
-                        volume_modifier = 1
+                        volume_modifier = 0.5
+                    })
+                    player.character.surface.create_entity({
+                        name = "atomic-fire-smoke",
+                        position = player.character.position
                     })
 
                     player.character.damage(global.d_player_dmg[player.index], game.forces["enemy"])

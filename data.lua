@@ -25,17 +25,28 @@ item.place_result = lamp_name
 item.localised_name = {"entity-name."..lamp_name}
 item.localised_description = {"entity-description."..lamp_name}
 
-local sound =
+local dark_sound =
 {
   type = "sound",
   name = "dark-damage",
   variations = {
-    {filename = "__base__/sound/fight/poison-capsule-explosion-1.ogg", volume = 1},
-    {filename = "__base__/sound/fight/poison-capsule-explosion-2.ogg", volume = 1},
-    {filename = "__base__/sound/fight/poison-capsule-explosion-3.ogg", volume = 1},
-    {filename = "__base__/sound/fight/poison-capsule-explosion-4.ogg", volume = 1},
-    {filename = "__base__/sound/fight/poison-capsule-explosion-5.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/swarm-1.ogg", volume = 1},
   }
 }
 
-data:extend({entity, item, recipe, sound})
+local pain =
+{
+  type = "sound",
+  name = "pain-damage",
+  variations = {
+    {filename = "__luxmortis__/sounds/pain-1.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/pain-2.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/pain-3.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/pain-4.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/pain-5.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/pain-6.ogg", volume = 1},
+    {filename = "__luxmortis__/sounds/pain-7.ogg", volume = 1},
+  }
+}
+
+data:extend({entity, item, recipe, dark_sound, pain })
