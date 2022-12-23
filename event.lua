@@ -5,8 +5,7 @@ end)
 
 -- Events
 script.on_event({defines.events.on_player_created, defines.events.on_player_respawned,
-                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario,
-                 defines.events.on_chunk_charted}, function(event)
+                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario}, function(event)
     dark_event_handler(event)
 end)
 
@@ -22,10 +21,6 @@ function dark_event_handler(event)
     elseif event.name == defines.events.on_chunk_charted then
         on_chunk_charted(event)
     end
-end
-
-function on_chunk_charted(event)
-        --event.force.unchart_chunk(event.position, event.surface_index)
 end
 
 -- New player
