@@ -126,7 +126,7 @@ function luxmortis_intro(victim)
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large]You have scavened some materials from the ship, to make a basic generator.[/font]"
+                caption = "[font=default-large]You have scavenged some materials from the ship, to make a basic generator.[/font]"
             }
             banished_main.add {
                 type = "label",
