@@ -34,6 +34,12 @@ script.on_event(defines.events.on_tick, function(event)
         global.FramesPerPlayer = global.MaxPlayers / numplayers
     end
 
+    if global.FramesPerPlayer < 1 then
+        global.FramesPerPlayer = 1
+    elseif numplayers > global.MaxPlayers then
+        global.FramesPerPlayer = 1
+    end
+
     -- Every FramesPerPlayer, check one player
     if game.tick % global.FramesPerPlayer == 0 then
 
@@ -87,7 +93,7 @@ script.on_event(defines.events.on_tick, function(event)
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] < 500 then
                     -- Increase damage
                     global.d_player_dmg[player.index] = (global.d_player_dmg[player.index] +
-                    global.d_player_dmg[player.index])
+                                                            global.d_player_dmg[player.index])
                 else
                     -- Else reset
                     global.d_player_dmg[player.index] = 5 -- Init
@@ -112,3 +118,4 @@ script.on_event(defines.events.on_tick, function(event)
         end
     end
 end)
+

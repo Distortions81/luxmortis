@@ -156,5 +156,5 @@ function d_player_globals(player)
         global.d_player_dmg = {}
     end
 
-    global.d_player_dmg[player.index] = 0
+    global.d_player_dmg[player.index] = 5
 end
