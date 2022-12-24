@@ -5,7 +5,7 @@ end)
 
 -- Events
 script.on_event({defines.events.on_player_created, defines.events.on_player_respawned,
-                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario}, function(event)
+                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario,defines.events.on_gui_click}, function(event)
     dark_event_handler(event)
 end)
 
@@ -20,6 +20,8 @@ function dark_event_handler(event)
         make_dark_globals()
     elseif event.name == defines.events.on_chunk_charted then
         on_chunk_charted(event)
+    elseif event.name == defines.events.on_gui_click then
+        on_gui_click(event)
     end
 end
 
@@ -91,7 +93,7 @@ function luxmortis_intro(victim)
 
             titlebar.add {
                 type = "sprite-button",
-                name = "banished_inform_close",
+                name = "luxmortis_intro_close",
                 sprite = "utility/close_white",
                 style = "frame_action_button",
                 tooltip = "Close this window"
@@ -156,6 +158,21 @@ function luxmortis_intro(victim)
             -- Close button
             if close then
                 victim.gui.screen.banished_inform.destroy()
+            end
+        end
+    end
+end
+
+function on_gui_click(event)
+    if event and event.element and event.element.valid and event.player_index then
+        local player = game.players[event.player_index]
+
+        if player and player.valid then
+            -- Info window close
+            if event.element.name == "luxmortis_intro_close" and player.gui and player.gui.screen then
+                if player.gui.screen.luxmortis_intro then
+                    player.gui.screen.luxmortis_intro.destroy()
+                end
             end
         end
     end
