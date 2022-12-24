@@ -78,7 +78,7 @@ function luxmortis_intro(victim)
             titlebar.add {
                 type = "label",
                 style = "frame_title",
-                caption = "[font=default-large-bold]System Status: [color=red]Red alert![/color][/font]"
+                caption = "[font=default-large-bold]Welcome to Lux Mortis: Planet OTS-45[/font]"
             }
 
             local pusher = titlebar.add {
@@ -114,43 +114,43 @@ function luxmortis_intro(victim)
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large]Due to an unexpected multiple-engine failure, your ship has crashed on a rogue planet named OTS-45.[/font]"
+                caption = "[font=default-large]Due to multiple engine failures, you have crashed landed on the pitch black planet[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large-bold]Planet OTS-45 does not have a parent star, and only knows the dim glow of distant starlight.[/font]"
+                caption = "[font=default-large]OTS-45. This rogue planet has no parent star, but it has enough atmosphere and[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = ""
+                caption = "[font=default-large]geological heating to sustain life. As you scavenge for resources from your crashed ship[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large]You have scavenged some materials from the ship, to make a basic generator.[/font]"
+                caption = "[font=default-large]and set up a power generator and lights, your head lamp runs out of power. You are then[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large]Shortly after getting the generator running, your head-lamp is no longer functioning.[/font]"
+                caption = "[font=default-large]attacked by a swarm of small insect-like lifeforms. You soon discover that these[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large][color=orange]You were suddenly attacked by a swarm of unknown life forms, and ran back to base.[/color][/font]"
+                caption = "[font=default-large]lifeforms are unable to cope with bright light, likely due to evolving on a planet with[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large]Luckily, It would appear these specific life forms are [color=cyan]unable to cope with bright light.[/color][/font]"
+                caption = "[font=default-large]no sunlight. You must use this knowledge and all your survival skills to survive on the[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large]Considering there is only faint starlight here, I guess that shouldn't be surprising.[/font]"
+                caption = "[font=default-large]planet and adapt to the harsh environment as you uncover the secrets of this[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = ""
+                caption = "[font=default-large]mysterious world. But be warned, who knows what other dangers may lurk in the darkness.[/font]"
             }
             banished_main.add {
                 type = "label",
-                caption = "[font=default-large][color=gray]Lets just hope we can keep the generator running, and there aren't any other threats out in the darkness...[/color][/font]"
+                caption = "[font=default-large]You must stay vigilant at all times in order to make it out alive. Good luck.[/font]"
             }
         else
             -- Close button

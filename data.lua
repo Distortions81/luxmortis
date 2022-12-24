@@ -53,8 +53,8 @@ local ots45 = {
   type = "sprite",
   name = "ots45",
   width=256,
-  height=192,
-  filename = "__luxmortis__/img/ots-45.png"
+  height=256,
+  filename = "__luxmortis__/img/intro.png"
 }
 
 data:extend({entity, item, recipe, dark_sound, pain, ots45})
