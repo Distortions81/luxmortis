@@ -5,7 +5,7 @@
   "author": "Distortions864",
   "contact": "Distortions81@gmail.com",
   "homepage": "http://m45sci.xyz/luxmortis",
-  "description": "",
+  "description": "Survive on a completely dark planet, with life forms that cannot cope with bright light.",
   "dependencies": ["base >= 1.1.50" ],
   "factorio_version": "1.1"
 }
