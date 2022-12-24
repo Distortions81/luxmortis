@@ -61,13 +61,16 @@ function dark_startmap()
         }
         startbox.insert {
             name = "copper-cable",
-            count = 100
+            count = 50
+        }
+        startbox.insert {
+            name = "wood",
+            count = 25
         }
         startbox.insert {
             name = "rocket-fuel",
-            count = 50
+            count = 10
         }
-
         -- start pump
         local ppos = {
             x = 4,
@@ -97,8 +100,8 @@ function dark_startmap()
         startboiler.rotatable = false
         startboiler.destructible = false
         startboiler.insert {
-            name = "wood",
-            count = 100
+            name = "rocket-fuel",
+            count = 10
         }
         -- start engine
         local epos = {
