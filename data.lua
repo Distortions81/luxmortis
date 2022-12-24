@@ -1,9 +1,8 @@
 local vanilla = "small-lamp"
-local lamp_name = "burner-lamp"
+local lamp_name = "large-lamp"
 
 local entity = table.deepcopy(data.raw.lamp[vanilla])
 entity.name = lamp_name
-entity.energy_source = {type = "void"}
 entity.localised_name = {"entity-name."..lamp_name}
 entity.localised_description = {"entity-description."..lamp_name}
 
@@ -14,9 +13,9 @@ recipe.localised_name = {"entity-name."..lamp_name}
 recipe.localised_description = {"entity-description."..lamp_name}
 recipe.ingredients =
     {
-      {"stone-furnace", 1},
-      {"iron-gear-wheel", 3},
-      {"iron-plate", 3}
+      {"small-lamp", 4},
+      {"iron-plate", 2},
+      {"copper-plate", 1}
     }
 
 local item = table.deepcopy(data.raw.item[vanilla])
