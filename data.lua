@@ -1,3 +1,4 @@
+
 data:extend({{
     type = "sprite",
     name = "ots45",
@@ -245,7 +246,7 @@ data:extend({{
     }
 }})
 
-table.insert(data.raw["technology"]["large-lamp"].effects, {
-    type = "unlock-recipe",
-    recipe = "large-lamp"
-})
+--table.insert(data.raw["technology"]["large-lamp"].effects, {
+--    type = "unlock-recipe",
+--    recipe = "large-lamp"
+--})
