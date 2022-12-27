@@ -6,36 +6,36 @@ script.on_event(defines.events.on_tick, function(event)
         return
     end
 
-    -- Check how many players are online
-    local numplayers = 0
-    for _, victim in pairs(game.connected_players) do
-        numplayers = numplayers + 1
-
-        -- No map for you!
-        if victim.render_mode ~= defines.render_mode.game then
-            victim.close_map()
-        end
-    end
-
-    -- Detect player count change
-    if numplayers ~= global.LastPlayerCount then
-
-        -- If the number of players decreased, make sure we don't check an invalid player
-        if numplayers < global.LastPlayerCount then
-
-            -- If so, reset position
-            if numplayers < global.DamPos then
-                global.DamPos = 1
-            end
-        end
-        global.LastPlayerCount = numplayers
-
-        -- Calculate number of ticks till next damage
-        global.FramesPerPlayer = global.MaxPlayers / numplayers
-    end
-
     -- Every FramesPerPlayer, check one player
     if game.tick % global.FramesPerPlayer == 0 then
+
+        -- Check how many players are online
+        local numplayers = 0
+        for _, victim in pairs(game.connected_players) do
+            numplayers = numplayers + 1
+
+            -- No map for you!
+            if victim.render_mode ~= defines.render_mode.game then
+                victim.close_map()
+            end
+        end
+
+        -- Detect player count change
+        if numplayers ~= global.LastPlayerCount then
+
+            -- If the number of players decreased, make sure we don't check an invalid player
+            if numplayers < global.LastPlayerCount then
+
+                -- If so, reset position
+                if numplayers < global.DamPos then
+                    global.DamPos = 1
+                end
+            end
+            global.LastPlayerCount = numplayers
+
+            -- Calculate number of ticks till next damage
+            global.FramesPerPlayer = global.MaxPlayers / numplayers
+        end
 
         -- If we are aren't to the last player yet, increment
         if global.DamPos < numplayers then
@@ -87,7 +87,7 @@ script.on_event(defines.events.on_tick, function(event)
                 if global.d_player_dmg[player.index] and global.d_player_dmg[player.index] < 500 then
                     -- Increase damage
                     global.d_player_dmg[player.index] = (global.d_player_dmg[player.index] +
-                    global.d_player_dmg[player.index])
+                                                            global.d_player_dmg[player.index])
                 else
                     -- Else reset
                     global.d_player_dmg[player.index] = 5 -- Init
