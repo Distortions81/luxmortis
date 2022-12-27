@@ -56,6 +56,9 @@ function player_setup(player)
     player.disable_flashlight()
 end
 
+function respawn_citems(player)
+end
+
 function luxmortis_intro(victim)
 
     if victim and victim.gui and victim.gui.screen then
