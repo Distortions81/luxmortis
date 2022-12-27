@@ -22,6 +22,7 @@ function make_dark_globals()
         global.FramesPerPlayer = 1
     end
 
+    --Beyond this, damage rate will just slow down
     if not global.MaxPlayers then
         global.MaxPlayers = 60
     end
