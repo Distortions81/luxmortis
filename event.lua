@@ -4,26 +4,25 @@ script.on_init(function()
 end)
 
 -- Events
-script.on_event({defines.events.on_player_created, defines.events.on_player_respawned,
-                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario,defines.events.on_gui_click}, function(event)
-    dark_event_handler(event)
-end)
+script.on_event({defines.events.on_tick, defines.events.on_player_created, defines.events.on_player_respawned,
+                 defines.events.on_cutscene_cancelled, defines.events.on_game_created_from_scenario,
+                 defines.events.on_gui_click}, function(event)
 
-function dark_event_handler(event)
-    if event.name == defines.events.on_player_created then
+    if event.name == defines.events.on_tick then
+        modLoop()
+    elseif event.name == defines.events.on_player_created then
         on_player_created(event)
     elseif event.name == defines.events.on_player_respawned then
         on_player_respawned(event)
     elseif event.name == defines.events.on_cutscene_cancelled then
         on_player_created(event)
+        make_dark_globals()
     elseif event.name == defines.events.on_game_created_from_scenario then
         make_dark_globals()
-    elseif event.name == defines.events.on_chunk_charted then
-        on_chunk_charted(event)
     elseif event.name == defines.events.on_gui_click then
         on_gui_click(event)
     end
-end
+end)
 
 -- New player
 function on_player_created(event)
@@ -34,7 +33,6 @@ function on_player_created(event)
         if player and player.valid then
             d_player_globals(player)
             player_setup(player)
-            respawn_citems(player)
             luxmortis_intro(player)
         end
     end
@@ -54,9 +52,6 @@ end
 function player_setup(player)
     player.minimap_enabled = false
     player.disable_flashlight()
-end
-
-function respawn_citems(player)
 end
 
 function luxmortis_intro(victim)
