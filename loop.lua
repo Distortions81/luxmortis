@@ -1,47 +1,42 @@
 -- Tick handler
-script.on_event(defines.events.on_tick, function(event)
-
-    -- Stop if not init yet
-    if not global.MaxPlayers then
-        return
-    end
-
-    -- Check how many players are online
-    local numplayers = 0
-    for _, victim in pairs(game.connected_players) do
-        numplayers = numplayers + 1
-
-        -- No map for you!
-        if victim.render_mode ~= defines.render_mode.game then
-            victim.close_map()
-        end
-    end
-
-    -- Detect player count change
-    if numplayers ~= global.LastPlayerCount then
-
-        -- If the number of players decreased, make sure we don't check an invalid player
-        if numplayers < global.LastPlayerCount then
-
-            -- If so, reset position
-            if numplayers < global.DamPos then
-                global.DamPos = 1
-            end
-        end
-        global.LastPlayerCount = numplayers
-
-        -- Calculate number of ticks till next damage
-        global.FramesPerPlayer = global.MaxPlayers / numplayers
-    end
-
-    if global.FramesPerPlayer < 1 then
-        global.FramesPerPlayer = 1
-    elseif numplayers > global.MaxPlayers then
-        global.FramesPerPlayer = 1
-    end
+function modLoop()
 
     -- Every FramesPerPlayer, check one player
     if game.tick % global.FramesPerPlayer == 0 then
+
+        -- Check how many players are online
+        local numplayers = 0
+        for _, victim in pairs(game.connected_players) do
+            numplayers = numplayers + 1
+
+            -- No map for you!
+            if victim.render_mode ~= defines.render_mode.game then
+                victim.close_map()
+            end
+        end
+
+        -- Detect player count change
+        if numplayers ~= global.LastPlayerCount then
+
+            -- If the number of players decreased, make sure we don't check an invalid player
+            if numplayers < global.LastPlayerCount then
+
+                -- If so, reset position
+                if numplayers < global.DamPos then
+                    global.DamPos = 1
+                end
+            end
+            global.LastPlayerCount = numplayers
+
+            -- Calculate number of ticks till next damage
+            global.FramesPerPlayer = global.MaxPlayers / numplayers
+        end
+
+        if global.FramesPerPlayer < 1 then
+            global.FramesPerPlayer = 1
+        elseif numplayers > global.MaxPlayers then
+            global.FramesPerPlayer = 1
+        end
 
         -- If we are aren't to the last player yet, increment
         if global.DamPos < numplayers then
@@ -117,5 +112,5 @@ script.on_event(defines.events.on_tick, function(event)
             end
         end
     end
-end)
+end
 
