@@ -1,6 +1,7 @@
 -- GLOBALS
 -- Create globals, if needed
 function make_dark_globals()
+
     -- Lamp radius
     if not global.d_lightd then
         global.d_lightd = 15
@@ -25,10 +26,15 @@ function make_dark_globals()
     if not global.MaxPlayers then
         global.MaxPlayers = 60
     end
+
+    -- Mark as init
+    if not global.luxinit then
+        global.luxinit = true
+    end
+
 end
 
-
---Map setup
+-- Map setup
 function dark_startmap()
 
     if not global.dark_settings_set then
